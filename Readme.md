@@ -1,6 +1,3 @@
-# CodeceptJS TypeScript Boilerplate
-
-This is a boilerplate project which includes CodeceptJS + Playwright setup using TypeScript.
 
 ## Technology Standards
 
@@ -10,7 +7,7 @@ This is a boilerplate project which includes CodeceptJS + Playwright setup using
 - [Typescript for CodeceptJS](https://codecept.io/typescript/#getting-started) 
 
 
-Install dependencies (preferable by yarn):
+## Install dependencies (preferable use yarn package manager):
 
 ```
 yarn
@@ -19,7 +16,7 @@ yarn
 yarn codeceptjs def
 ```
 
-## Commands to run tests with visible tests
+## Commands to run tests with visible test steps
 
 ```
 yarn codeceptjs run --steps
