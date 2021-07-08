@@ -3,7 +3,7 @@
 
 - CodeceptJS **3.0.latest**
 - Playwright **1.12.latest**
-- Node.js **^16.latest**
+- Node.js **16.latest**
 - [Typescript for CodeceptJS](https://codecept.io/typescript/#getting-started) 
 
 
