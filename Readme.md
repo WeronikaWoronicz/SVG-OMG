@@ -19,6 +19,10 @@ yarn codeceptjs def
 ## Commands to run tests with visible test steps
 
 ```
+cd tests
+```
+
+```
 yarn codeceptjs run --steps
 ```
 
