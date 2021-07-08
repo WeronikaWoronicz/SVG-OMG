@@ -1,5 +1,5 @@
 const Main = require('../support/Main.ts')
-const MainPage = require('../support/Main.ts')
+const MainPage = require('../support/MainPage.ts')
 const { expect } = require('chai')
 
 
@@ -45,9 +45,9 @@ Scenario('Check that Open SVG and file optimization works as expected', async ({
   I.seeInThisFile('<svg')
   I.seeInThisFile('</svg>')
   I.say('Open SVG works as expected')
-  MainPage.checkThatCommentsAreRemoved
-  MainPage.checkThatMetaDataAreRemoved
-  MainPage.checkThatXMLInstructionsAreRemoved
+  MainPage.checkThatCommentsAreRemoved()
+  MainPage.checkThatMetaDataAreRemoved()
+  MainPage.checkThatXMLInstructionsAreRemoved()
   I.click(Main.showOriginalCheckbox)
   I.seeCheckboxIsChecked(Main.showOriginalCheckbox)
   I.handleDownloads('original.svg')
@@ -64,15 +64,15 @@ Scenario('Check that Open SVG and file optimization works as expected', async ({
 Scenario('Check that optimization in Demo works as expected', async ({ I, homePage }) => {
   homePage.goToHome()
   I.click(Main.demoButton)
-  I.handleDownloads('optimized.svg')
+  I.handleDownloads('optimizedDemo.svg')
   I.click('Download')
   I.amInPath('output')
-  I.waitForFile('optimized.svg', 5)
+  I.waitForFile('optimizedDemo.svg', 5)
   I.seeInThisFile('<svg')
   I.seeInThisFile('</svg>')
-  MainPage.checkThatCommentsAreRemoved
-  MainPage.checkThatMetaDataAreRemoved
-  MainPage.checkThatXMLInstructionsAreRemoved
+  MainPage.checkThatCommentsAreRemoved()
+  MainPage.checkThatMetaDataAreRemoved()
+  MainPage.checkThatXMLInstructionsAreRemoved()
   I.click('Reset all')
   I.click(Main.showOriginalCheckbox)
   I.seeCheckboxIsChecked(Main.showOriginalCheckbox)
@@ -85,12 +85,9 @@ Scenario('Check that optimization in Demo works as expected', async ({ I, homePa
   expect(originalFileInfo.size).to.be.above(optimizedFileInfo.size) 
   I.say('Original file is bigger than optimized file')
   I.click('Markup')
-  I.click(Main.showOriginalCheckbox)
-  I.dontSeeCheckboxIsChecked(Main.showOriginalCheckbox)
-  I.seeCheckboxIsChecked('Remove comments')
-  I.seeCheckboxIsChecked('Remove <metadata>')
-  I.seeCheckboxIsChecked('Remove XML instructions')
-  MainPage.checkThatCommentsAreRemoved
-  MainPage.checkThatMetaDataAreRemoved
-  MainPage.checkThatXMLInstructionsAreRemoved
+  I.see('<!--')
+  I.click('Remove comments')
+  I.dontSeeCheckboxIsChecked('Remove comments')
+  I.say('Next step is not going to pass because markup is not updated on the fly')
+  I.dontSee('<!--')
 })
