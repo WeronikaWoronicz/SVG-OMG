@@ -90,14 +90,7 @@ Scenario('Check that optimization in Demo works as expected', async ({ I, homePa
   I.seeCheckboxIsChecked('Remove comments')
   I.seeCheckboxIsChecked('Remove <metadata>')
   I.seeCheckboxIsChecked('Remove XML instructions')
-  I.say('Check that comments are removed by Remove comments')
-  I.dontSee('<!--')
-  I.dontSee('-->')
-  I.say('Check that metadata are removed by Remove <metadata>')
-  I.dontSee('structures:metadata=')
-  I.dontSee('MetadataType')
-  I.dontSee('structures:')
-  I.say('Check that xml instructions are removed by “Remove XMLinstructions”')
-  I.dontSee('<?')
-  I.dontSee('?>')
+  MainPage.checkThatCommentsAreRemoved
+  MainPage.checkThatMetaDataAreRemoved
+  MainPage.checkThatXMLInstructionsAreRemoved
 })
